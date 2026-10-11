@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ma chaîne – Vidéos et boutique</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F2F5F9;--ink:#14213D;--mute:#5A6785;--card:#fff;--line:#D8DFEB;--acc:#2F4BFF;--accink:#fff;--tag:#FFD23F;--tagink:#14213D;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1424;--ink:#EAF0FF;--mute:#9AA7C7;--card:#171F36;--line:#2A3556;--acc:#6D83FF;--accink:#0E1424}}
+:root[data-theme="dark"]{--bg:#0E1424;--ink:#EAF0FF;--mute:#9AA7C7;--card:#171F36;--line:#2A3556;--acc:#6D83FF;--accink:#0E1424}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1rem/1.55 "DM Sans",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 28px}
+h1{font:800 clamp(2.6rem,9vw,6rem)/.95 "Bricolage Grotesque",system-ui,sans-serif;margin:0 0 16px;letter-spacing:-.03em}
+.brand{display:flex;align-items:center;gap:18px;margin:0 0 16px}
+.brand h1{margin:0;min-width:0;overflow-wrap:anywhere}
+.logo{height:clamp(72px,16vw,140px);width:auto;display:block}
+header p{max-width:52ch;color:var(--mute);font-size:1.1rem;margin:0 0 24px}
+.btn{display:inline-block;background:var(--acc);color:var(--accink);padding:12px 22px;border-radius:999px;font-weight:700}
+.btn:hover{filter:brightness(1.1)}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:8px;padding-top:10px;padding-bottom:10px}
+nav button{font:700 1rem "DM Sans",sans-serif;background:none;color:var(--mute);border:0;padding:10px 18px;border-radius:999px;cursor:pointer}
+nav button[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+nav .lane{display:block;padding:0;height:38px;position:relative;overflow:hidden}
+.walker{position:absolute;left:0;bottom:2px;height:34px;will-change:transform}
+.walker img{height:34px;width:auto;display:block;animation:bob .32s ease-in-out infinite alternate}
+@keyframes bob{from{transform:translateY(0) rotate(-5deg)}to{transform:translateY(-3px) rotate(5deg)}}
+main{padding:32px 0 64px}
+.grid{display:grid;gap:20px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.thumb{aspect-ratio:16/9;display:grid;place-items:center;position:relative}
+.play{width:56px;height:56px;border-radius:50%;background:#fff;display:grid;place-items:center}
+.play::after{content:"";border-left:16px solid #14213D;border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:4px}
+.dur{position:absolute;right:8px;bottom:8px;background:#000c;color:#fff;font-size:.8rem;padding:2px 7px;border-radius:5px}
+.card:hover .play{transform:scale(1.08)}
+.play{transition:transform .15s}
+.body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+.body h3{margin:0;font:600 1.1rem/1.25 "Bricolage Grotesque",sans-serif}
+.meta{color:var(--mute);font-size:.9rem}
+.price{display:inline-block;align-self:flex-start;background:var(--tag);color:var(--tagink);font-weight:700;padding:3px 10px;border-radius:6px}
+.body .btn{margin-top:auto;text-align:center;padding:10px 16px}
+.mock{aspect-ratio:1/1;overflow:hidden;background:#1d2a6b}
+.mock img{width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block}
+.promo{margin:0 0 28px}
+.promo video{width:100%;max-width:860px;aspect-ratio:864/496;border-radius:14px;display:block;background:#000}
+.back{font:700 1rem "DM Sans",sans-serif;background:none;border:0;color:var(--acc);cursor:pointer;padding:0 0 18px}
+.co{display:grid;gap:28px;grid-template-columns:minmax(0,420px) 1fr;align-items:start}
+.co img{width:100%;border-radius:14px;display:block;border:1px solid var(--line)}
+.co h2{font:800 clamp(1.6rem,5vw,2.4rem)/1.1 "Bricolage Grotesque",sans-serif;margin:0 0 8px}
+.qty{display:flex;align-items:center;gap:14px;margin:18px 0}
+.qty button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.3rem;cursor:pointer}
+.total{font:800 2rem "Bricolage Grotesque",sans-serif;margin:0 0 18px}
+.btn[aria-disabled="true"]{opacity:.5;cursor:not-allowed}
+@media (max-width:700px){.co{grid-template-columns:1fr}}
+[hidden]{display:none!important}
+footer{border-top:1px solid var(--line);padding:24px 0;color:var(--mute);font-size:.9rem}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.walker img{animation:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="brand"><img class="logo" alt="Logo Sarutomy Games" src="data:image/png;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..."><h1 id="name"></h1></div>
+  <p id="bio"></p>
+  <a class="btn" id="sub" target="_blank" rel="noopener">S'abonner sur YouTube</a>
+</div></header>
+
+<nav><div class="wrap" role="tablist">
+  <button role="tab" id="t-videos" aria-selected="true" aria-controls="videos">Vidéos</button>
+  <button role="tab" id="t-shop" aria-selected="false" aria-controls="shop">Boutique</button>
+</div>
+<div class="wrap lane" aria-hidden="true"><div class="walker" id="walker"><img alt="" src="data:image/png;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..."></div></div></nav>
+
+<main class="wrap">
+  <section id="videos" role="tabpanel" aria-labelledby="t-videos"><div class="grid" id="vgrid"></div></section>
+  <section id="shop" role="tabpanel" aria-labelledby="t-shop" hidden>
+    <div class="promo"><video controls autoplay muted loop playsinline preload="auto" aria-label="Présentation de nos goodies" poster="data:image/jpeg;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..." src="data:video/mp4;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..."></video></div>
+    <div class="grid" id="sgrid"></div>
+  </section>
+  <section id="checkout" hidden>
+    <button class="back" id="back">← Retour à la boutique</button>
+    <div class="co">
+      <img id="co-img" alt="">
+      <div>
+        <h2 id="co-name"></h2>
+        <div class="meta" id="co-price"></div>
+        <div class="qty"><button id="minus" aria-label="Moins">−</button><strong id="qty">1</strong><button id="plus" aria-label="Plus">+</button></div>
+        <p class="total" id="total"></p>
+        <a class="btn" id="pay" target="_blank" rel="noopener">Payer avec PayPal</a>
+        <p class="meta" id="co-note"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script>
+/* ====== À MODIFIER : tes informations ====== */
+const CONFIG = {
+  name: "sarutomy.com",
+  bio: "Bienvenue ! Retrouve ici toutes mes vidéos et mes produits officiels.",
+  channelUrl: "https://www.youtube.com/@Sarutomy",
+  // Ton nom PayPal.me (ex. "sarutomy" pour paypal.me/sarutomy). Le montant se calcule tout seul.
+  paypalMe: "",
+  // id = ce qui suit "v=" dans le lien YouTube de la vidéo
+  videos: [
+    {id:"7Bh2q_aYuU4", title:"Il est temps ! MineGood SMP V2 corruption / EP.1", date:"", dur:"Vidéo", color:"#2F4BFF"},
+    {id:"BnlifOADxFw", title:"Fnaf X fortnite", date:"", dur:"Short", color:"#E4572E", short:true},
+    {id:"sdRalTktgI8", title:"99 night in the forest X fortnite", date:"", dur:"Short", color:"#17A398", short:true},
+    {id:"nNle7ymshf4", title:"Fortnitemares 2026", date:"", dur:"Short", color:"#7B3FE4", short:true},
+    {id:"oDDZlF3w2MQ", title:"Première vidéo !", date:"", dur:"Vidéo", color:"#F28F3B"},
+    {id:"l4F-ZIZW8LU", title:"Je dois survivre au Titanic mais dans Roblox #Roblox @Sarutomy (ct chaud 🫨🫨🫨)", date:"", dur:"Vidéo", color:"#2F4BFF"},
+    {id:"7WG4Umc4PbE", title:"MineGoodSmp Saison 2 corrutpption Warden /TRAILER/ #minecraft #minegoodsmp @Sarutomy !!!", date:"", dur:"Vidéo", color:"#17A398"},
+    {id:"AS3U7QtAgmM", title:"Fortnite Nouveau mode de jeu Recharge #gaming #fortniteclips #chapitre1 #sarutomy", date:"", dur:"Vidéo", color:"#E4572E"},
+    {id:"qs3cI25gTII", title:"Le Zapotron bientot de retour ? abonne-toi à @Sarutomy et @Safiaetisma ! #shorts", date:"", dur:"Short", color:"#7B3FE4", short:true},
+    {id:"QqR-3c0ssOk", title:"🤣🤣 #amongus #pourtoi #gaming #fortnite #pubgmobile #funny #edit #minecraft #pokemon #animation", date:"", dur:"Vidéo", color:"#2F4BFF"},
+    {id:"SH_XWR_7fRM", title:"🤣🤣 #amongus #pourtoi #gaming #fortnite #pubgmobile #funny #edit #minecraft #pokemon #animation", date:"", dur:"Vidéo", color:"#E4572E"},
+    {id:"P4_VAksPAzg", title:"🤣👍#amongus #pourtoi #gaming #fortnite #pubgmobile #funny #edit #minecraft #pokemon #animation", date:"", dur:"Vidéo", color:"#17A398"},
+    {id:"onvby3Kgdxk", title:"😂👍 #amongus #pourtoi #gaming #fortnite #pubgmobile #funny #edit #minecraft #pokemon #animation", date:"", dur:"Vidéo", color:"#F28F3B"},
+    {id:"_QLiX3pa0-Q", title:"😂2/2👍 #amongus #pourtoi #gaming #fortnite #pubgmobile #funny #edit #minecraft #pokemon #animation", date:"", dur:"Vidéo", color:"#7B3FE4"}
+  ],
+  // payUrl = lien de paiement du produit (ex. Stripe Payment Link ou PayPal). Vide = paiement pas encore branché.
+  products: [
+    {name:"Gourde en plastique SARUTOMY", price:"25 €", amount:25, payUrl:"", img:"data:image/png;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..."},
+    {name:"T-Shirt Blanc SARUTOMY", price:"30 €", amount:30, payUrl:"", img:"data:image/jpeg;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..."},
+    {name:"Pull Noir avec capuche SARUTOMY", price:"35 €", amount:35, payUrl:"", img:"data:image/jpeg;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..."},
+    {name:"Casquette blanche SARUTOMY", price:"29,99 €", amount:29.99, payUrl:"", img:"data:image/jpeg;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..."},
+    {name:"Blister Lorcana « La Mer Azurite »", price:"7,50 €", amount:7.5, payUrl:"", img:"data:image/jpeg;base64,...COLLE_ICI_LE_CODE_DE_TON_FICHIER..."}
+  ]
+};
+/* =========================================== */
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+document.title = CONFIG.name + " – Vidéos et boutique";
+$("#name").textContent = CONFIG.name;
+$("#bio").textContent = CONFIG.bio;
+$("#sub").href = CONFIG.channelUrl + "?sub_confirmation=1";
+$("#foot").textContent = "© " + new Date().getFullYear() + " " + CONFIG.name;
+
+$("#vgrid").innerHTML = CONFIG.videos.map(v => `
+  <a class="card" href="https://www.youtube.com/${v.short ? 'shorts/' : 'watch?v='}${encodeURIComponent(v.id)}" target="_blank" rel="noopener">
+    <div class="thumb" style="background:${esc(v.color)}"><span class="play"></span><span class="dur">${esc(v.dur)}</span></div>
+    <div class="body"><h3>${esc(v.title)}</h3><span class="meta">${esc(v.date)}</span></div>
+  </a>`).join("");
+
+$("#sgrid").innerHTML = CONFIG.products.map((p,i) => `
+  <div class="card">
+    <div class="thumb mock"><img src="${p.img}" alt="${esc(p.name)}"></div>
+    <div class="body"><h3>${esc(p.name)}</h3><span class="price">${esc(p.price)}</span>
+      <button class="btn" data-i="${i}" style="border:0;cursor:pointer;font:700 1rem 'DM Sans',sans-serif">Commander</button></div>
+  </div>`).join("");
+
+const tabs = {videos:$("#t-videos"), shop:$("#t-shop")};
+function show(name){
+  for (const k in tabs) tabs[k].setAttribute("aria-selected", k===name || (k==="shop" && name==="checkout"));
+  for (const k of ["videos","shop","checkout"]) $("#"+k).hidden = k!==name;
+  window.scrollTo(0,0);
+  try { history.replaceState(null,"","#"+(name==="checkout"?"shop":name)); } catch(e){}
+}
+const eur = n => (Math.round(n*100)/100).toLocaleString("fr-FR") + " €";
+let cur = null, qty = 1;
+function refresh(){
+  const total = Math.round(cur.amount * qty * 100) / 100;
+  $("#qty").textContent = qty;
+  $("#total").textContent = "Total : " + eur(total);
+  const pay = $("#pay");
+  const url = cur.payUrl || (CONFIG.paypalMe ? "https://www.paypal.me/" + encodeURIComponent(CONFIG.paypalMe) + "/" + total.toFixed(2) + "EUR" : "");
+  if (url){ pay.href = url; pay.removeAttribute("aria-disabled"); $("#co-note").textContent = ""; }
+  else { pay.removeAttribute("href"); pay.setAttribute("aria-disabled","true"); $("#co-note").textContent = "Le paiement PayPal n'est pas encore activé sur ce site."; }
+}
+$("#sgrid").addEventListener("click", e => {
+  const b = e.target.closest("button[data-i]"); if (!b) return;
+  cur = CONFIG.products[+b.dataset.i]; qty = 1;
+  $("#co-img").src = cur.img; $("#co-img").alt = cur.name;
+  $("#co-name").textContent = cur.name;
+  $("#co-price").textContent = cur.price + " l'unité";
+  refresh(); show("checkout");
+});
+$("#pay").addEventListener("click", e => { if ($("#pay").getAttribute("aria-disabled")) e.preventDefault(); });
+$("#minus").addEventListener("click", () => { if (qty > 1){ qty--; refresh(); } });
+$("#plus").addEventListener("click", () => { if (qty < 10){ qty++; refresh(); } });
+$("#back").addEventListener("click", () => show("shop"));
+for (const k in tabs) tabs[k].addEventListener("click", () => show(k));
+show(location.hash === "#shop" ? "shop" : "videos");
+
+/* Petit Among Us qui se balade sous le menu */
+(function(){
+  const w = $("#walker"), img = w.firstElementChild;
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  let x = 0, dir = Math.random() < .5 ? 1 : -1, pause = 0, last = performance.now();
+  function step(t){
+    const dt = Math.min((t - last) / 1000, .1); last = t;
+    const max = Math.max(0, w.parentElement.clientWidth - w.offsetWidth);
+    if (pause > 0){ pause -= dt; }
+    else {
+      x += dir * 55 * dt;
+      if (x >= max){ x = max; dir = -1; }
+      if (x <= 0){ x = 0; dir = 1; }
+      if (Math.random() < dt * .25) pause = 1 + Math.random() * 1.5;
+    }
+    img.style.animationPlayState = pause > 0 ? "paused" : "running";
+    w.style.transform = "translateX(" + x + "px) scaleX(" + dir + ")";
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+})();
+</script>
+</body>
+</html>
